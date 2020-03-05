@@ -1,0 +1,15 @@
+<h1>All Cocktails</h1>
+<div class="add_article">
+  <%= link_to '<i class="fas fa-plus-square"></i> New Cocktail'.html_safe, new_cocktail_path %>
+</div>
+
+
+<ul>
+  <% @cocktails.each do |cocktail| %>
+  <li>
+  <%= link_to cocktail.name, cocktail_path(cocktail) %>
+  </li>
+  <% end %>
+</ul>
+
+

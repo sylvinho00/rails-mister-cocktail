@@ -16,4 +16,7 @@
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap';
+import { initSelect2 } from './init_select2';
+
+initSelect2();
 console.log('Hello World from Webpacker');
