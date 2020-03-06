@@ -1,6 +1,7 @@
 class CocktailsController < ApplicationController
   def index
     @cocktails = Cocktail.all
+    @new_cocktail = Cocktail.new
   end
 
   def show
@@ -8,16 +9,17 @@ class CocktailsController < ApplicationController
     @dose = Dose.new
   end
 
-  def new
-    @cocktail = Cocktail.new
-  end
+  # def new
+  #   @cocktail = Cocktail.new
+  # end
 
   def create
-    @cocktail = Cocktail.new(cocktail_params)
-    if @cocktail.save
-      redirect_to cocktail_path(@cocktail), notice: "Cocktail '#{@cocktail.name}' as been added successfully"
+    @new_cocktail = Cocktail.new(cocktail_params)
+    if @new_cocktail.save
+      redirect_to cocktail_path(@new_cocktail), notice: "Cocktail '#{@new_cocktail.name}' as been added successfully"
     else
-      render :new
+      @cocktails = Cocktail.all
+      render :index
     end
   end
 

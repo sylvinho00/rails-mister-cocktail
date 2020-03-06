@@ -5,8 +5,7 @@ class CreateDoses < ActiveRecord::Migration[5.2]
       t.references :cocktail, foreign_key: true, null: false
       t.references  :ingredient,
                     foreign_key: true,
-                    null: false,
-                    uniqueness: { scope: [:cocktail] }
+                    null: false
 
       t.timestamps
     end

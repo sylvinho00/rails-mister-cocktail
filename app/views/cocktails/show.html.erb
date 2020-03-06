@@ -1,12 +1,11 @@
-<h1>Page of: <%= @cocktail.name.upcase %></h1>
-
+<h1><%= @cocktail.name.upcase %></h1>
 
 Ingredients list:
 <!-- List all ingredients -->
 <div class="ingredient">
   <% @cocktail.doses.each do |dose| %>
   <%= dose.description %> of <%= dose.ingredient.name %>
-  <%= link_to "⚰️",
+  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
             dose_path(dose),
             method: :delete,
             data: { confirm: "Are you sure?" }%>
@@ -17,17 +16,17 @@ Ingredients list:
 <br>
 <br>
 
-
-
 <div class="add_ingredient">
-  <h2>Add an ingredient:</h2>
+  <h3>Add an ingredient:</h3>
   <%= simple_form_for([@cocktail, @dose]) do |f| %>
       <%= f.input :description %>
       <%= f.association :ingredient, collection: Ingredient.order('name ASC'), input_html: {class: "select2"} %>
       <!-- Form multiple select add multiple: "true" in imput_html -->
-      <%= f.button :submit %>
+      <%= f.submit 'Add it', class: 'btn btn-primary' %>
+
   <% end %>
 </div>
+
 
 
 
