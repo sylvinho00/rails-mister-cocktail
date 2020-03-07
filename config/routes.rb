@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'cocktails/:id', to: 'cocktails#show', as: 'cocktail'
 
   # post 'cocktails/:cocktail_id/doses', to: 'doses#create'
-
+  root 'cocktails#index'
   resources :cocktails, only: [:index, :new, :create, :show] do
     resources :doses, only: [:create]
   end
